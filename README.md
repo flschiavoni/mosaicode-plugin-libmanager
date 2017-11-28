@@ -1,6 +1,6 @@
-# Mosaicode Blocks: Javascript with Web Audio API
+# Mosaicode Library Manager Plugin
 
-**This repository contains Mosaicode Blocks to generate Javascript Code (Web Audio API).**
+**This repository contains Mosaicode Library Manager Plugin that alows create and edit libraries for Mosaicode.**
 
 -------------
 
