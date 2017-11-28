@@ -96,7 +96,7 @@ class LibManagerControl(object):
 
         """
 
-        BlockEditor(self.block.diagram.main_window,
-                System.blocks[self.block.type])
+        BlockEditor(self.main_window,
+                System.blocks[self.main_window.main_control.get_selected_block().type])
 
 # ----------------------------------------------------------------------
