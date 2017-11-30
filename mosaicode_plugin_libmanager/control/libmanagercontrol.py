@@ -95,8 +95,7 @@ class LibManagerControl(object):
             * **args**
 
         """
-
-        BlockEditor(self.main_window,
-                System.blocks[self.main_window.main_control.get_selected_block().type])
+        if(self.main_window.main_control.get_selected_block().type is not None):
+            BlockEditor(self.main_window, System.blocks[self.main_window.main_control.get_selected_block().type])
 
 # ----------------------------------------------------------------------
