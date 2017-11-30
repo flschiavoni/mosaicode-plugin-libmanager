@@ -184,6 +184,7 @@ class BlockPortEditor(Gtk.ScrolledWindow):
                 new_port[widget.get_name()] = widget.get_value()
             except:
                 pass
+
         if "label" not in new_port or "name" not in new_port or \
                 "type" not in new_port:
             return
