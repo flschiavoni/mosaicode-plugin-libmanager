@@ -46,8 +46,7 @@ class BlockManager(Gtk.Dialog):
 
         # Block List
         self.block_notebook = BlockNotebook(self)
-        System()
-        self.block_notebook.update_blocks(System.blocks)
+        self.update()
         vbox.pack_start(self.block_notebook, True, True, 0)
 
         # Button bar
@@ -110,5 +109,6 @@ class BlockManager(Gtk.Dialog):
 
     # ----------------------------------------------------------------------
     def update(self):
-        self.block_notebook.update_blocks()
+        System()
+        self.block_notebook.update_blocks(System.blocks)
 # ----------------------------------------------------------------------
