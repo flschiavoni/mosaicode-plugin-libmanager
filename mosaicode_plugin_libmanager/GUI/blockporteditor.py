@@ -208,7 +208,7 @@ class BlockPortEditor(Gtk.ScrolledWindow):
             i += 1
         if not contains:
             self.block.ports.append(new_port)
-        self.__populate_lists()
+        self.__populate_list()
         self.__clean_side_panel()
 
 # ----------------------------------------------------------------------
