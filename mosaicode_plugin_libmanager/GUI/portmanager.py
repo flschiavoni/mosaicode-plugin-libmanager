@@ -88,7 +88,8 @@ class PortManager(Gtk.Dialog):
 
     # ----------------------------------------------------------------------
     def __new(self, widget=None, data=None):
-        PortEditor(self, None)
+        name = self.__get_selected()
+        PortEditor(self, name)
 
     # ----------------------------------------------------------------------
     def __edit(self, widget=None, data=None):
