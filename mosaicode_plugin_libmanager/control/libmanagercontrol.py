@@ -86,16 +86,4 @@ class LibManagerControl(object):
         self.export_xml()
         Dialog().message_dialog("Exporting as xml", "Exported successfully!", self.main_window)
 
-    # ----------------------------------------------------------------------
-    def edit_clicked(self, args):
-        """
-        This method monitors if the button delete was clicked.
-
-            Parameters:
-            * **args**
-
-        """
-        if(self.main_window.main_control.get_selected_block().type is not None):
-            BlockEditor(self.main_window, System.blocks[self.main_window.main_control.get_selected_block().type])
-
 # ----------------------------------------------------------------------

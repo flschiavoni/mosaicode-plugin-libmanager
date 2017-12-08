@@ -12,20 +12,16 @@ import gettext
 
 _ = gettext.gettext
 
-class LibManagerMenu(Gtk.Menu, Plugin):
+class LibManagerMenu(Gtk.Menu):
     """
     This class contains methods related the LibManagerMenu
     """
     # ----------------------------------------------------------------------
 
-    def __init__(self):
+    def __init__(self, main_window):
         """Constructor."""
         Gtk.Menu.__init__(self)
-        self.label = "Library Manager"
-        self.control = None
 
-
-    def load(self, main_window):
         self.control = LibManagerControl(main_window)
         main_window.menu.create_menu(_("Code Template Manager"), None,
                    self, self.control.code_template_manager)
@@ -40,7 +36,3 @@ class LibManagerMenu(Gtk.Menu, Plugin):
         main_window.menu.create_menu(_("Python"), None, export_blocks_menu, self.control.export_python_dialog)
         main_window.menu.create_menu(_("XML"), None, export_blocks_menu, self.control.export_xml_dialog)
 
-        menu_item = Gtk.MenuItem("Edit Block")
-        menu_item.connect("activate", self.control.edit_clicked)
-
-        main_window.block_menu.append(menu_item)
