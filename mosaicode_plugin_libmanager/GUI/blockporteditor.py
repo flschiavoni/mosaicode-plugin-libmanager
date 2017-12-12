@@ -141,8 +141,9 @@ class BlockPortEditor(Gtk.ScrolledWindow):
         self.__clean_side_panel()
 
         connectors = []
-        for key in System.ports:
-            if System.ports[key].language == self.block.language:
+        ports = System.get_ports()
+        for key in ports:
+            if ports[key].language == self.block.language:
                 connectors.append(key)
 
         data = {"label": _("Port Type"), "name":"type", "values": connectors}

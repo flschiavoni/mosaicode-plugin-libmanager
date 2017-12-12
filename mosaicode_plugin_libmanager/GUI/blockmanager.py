@@ -110,5 +110,5 @@ class BlockManager(Gtk.Dialog):
     # ----------------------------------------------------------------------
     def update(self):
         System()
-        self.block_notebook.update_blocks(System.blocks)
+        self.block_notebook.update_blocks(System.get_blocks())
 # ----------------------------------------------------------------------
