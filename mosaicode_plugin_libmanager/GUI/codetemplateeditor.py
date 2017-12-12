@@ -37,8 +37,9 @@ class CodeTemplateEditor(Gtk.Dialog):
                                 Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
 
         self.code_template_manager = code_template_manager
+        system_code_template = System.get_code_templates()
         if code_template_name is not None:
-            self.code_template = System.code_templates[code_template_name]
+            self.code_template = system_code_template[code_template_name]
         else:
             self.code_template = CodeTemplate()
 

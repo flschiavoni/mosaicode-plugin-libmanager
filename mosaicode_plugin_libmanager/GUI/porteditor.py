@@ -36,7 +36,7 @@ class PortEditor(Gtk.Dialog):
     # ----------------------------------------------------------------------
     def __init__(self, port_manager, port):
         self.port_manager = port_manager
-        self.port = System.ports[port]
+        self.port = System.get_ports()[port]
         Gtk.Dialog.__init__(self, _("Port Editor"), self.port_manager,
                             0, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                                 Gtk.STOCK_SAVE, Gtk.ResponseType.OK))

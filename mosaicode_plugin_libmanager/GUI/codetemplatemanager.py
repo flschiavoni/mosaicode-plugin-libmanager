@@ -114,7 +114,8 @@ class CodeTemplateManager(Gtk.Dialog):
     def __update(self):
         System()
         code_template_list = []
-        for x in System.code_templates:
+        code_template = System.get_code_templates()
+        for x in code_templates:
             code_template_list.append([x])
         code_template_list.sort()
         self.tree_store.clear()
