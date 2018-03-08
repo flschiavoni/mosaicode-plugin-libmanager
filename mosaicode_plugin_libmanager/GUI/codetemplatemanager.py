@@ -34,7 +34,8 @@ class CodeTemplateManager(Gtk.Dialog):
 
     # ----------------------------------------------------------------------
     def __init__(self, main_window):
-        Gtk.Dialog.__init__(self, _("Code Template Manager"), main_window, 0, ())
+        Gtk.Dialog.__init__(
+            self, _("Code Template Manager"), main_window, 0, ())
 
         self.main_window = main_window
         self.set_default_size(400, 300)
@@ -59,9 +60,12 @@ class CodeTemplateManager(Gtk.Dialog):
 
         # Button bar
         button_bar = ButtonBar()
-        button_bar.add_button({"icone":Gtk.STOCK_NEW, "action": self.__new, "data":None})
-        button_bar.add_button({"icone":Gtk.STOCK_EDIT, "action": self.__edit, "data":None})
-        button_bar.add_button({"icone":Gtk.STOCK_DELETE, "action": self.__delete, "data":None})
+        button_bar.add_button(
+            {"icone": Gtk.STOCK_NEW, "action": self.__new, "data": None})
+        button_bar.add_button(
+            {"icone": Gtk.STOCK_EDIT, "action": self.__edit, "data": None})
+        button_bar.add_button(
+            {"icone": Gtk.STOCK_DELETE, "action": self.__delete, "data": None})
         vbox.pack_start(button_bar, False, False, 0)
 
         self.__update()
@@ -114,7 +118,7 @@ class CodeTemplateManager(Gtk.Dialog):
     def __update(self):
         System()
         code_template_list = []
-        code_template = System.get_code_templates()
+        code_templates = System.get_code_templates()
         for x in code_templates:
             code_template_list.append([x])
         code_template_list.sort()
