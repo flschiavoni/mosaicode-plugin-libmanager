@@ -54,24 +54,27 @@ class PortEditor(Gtk.Dialog):
         self.tabs.append_page(common_tab, Gtk.Label(_("Common Properties")))
         self.type = StringField({"label": _("Type")}, None)
         self.language = StringField({"label": _("Language")}, None)
-        self.label = StringField({"label": _("Label")}, None)
+        self.hint = StringField({"label": _("Hint")}, None)
         self.color = ColorField({"label": _("Color")}, None)
         self.color.set_parent_window(self)
         self.multiple = CheckField({"label": _("Multiple")}, None)
+        self.var_name = StringField({"label": _("Var Name")}, None)
 
         if port is not None:
             System()
             self.type.set_value(port)
             self.language.set_value(self.port.language)
-            self.label.set_value(self.port.label)
+            self.hint.set_value(self.port.hint)
             self.color.set_value(self.port.color)
             self.multiple.set_value(self.port.multiple)
+            self.var_name.set_value(self.port.var_name)
 
         common_tab.pack_start(self.type, False, False, 1)
         common_tab.pack_start(self.language, False, False, 1)
-        common_tab.pack_start(self.label, False, False, 1)
+        common_tab.pack_start(self.hint, False, False, 1)
         common_tab.pack_start(self.color, False, False, 1)
         common_tab.pack_start(self.multiple, False, False, 1)
+        common_tab.pack_start(self.var_name, False, False, 1)
 
         # Connection Code ----------------------------------------------------
         code_tab = Gtk.VBox()
@@ -101,7 +104,7 @@ class PortEditor(Gtk.Dialog):
         for widget in top_button_bar.get_children():
             top_button_bar.remove(widget)
 
-        # Block Common Properties
+        # Port Common Properties
         data = {"label": _("Common Properties"),
                 "name": "common",
                 "values": ["$input$",
@@ -121,10 +124,11 @@ class PortEditor(Gtk.Dialog):
         port = Port()
         port.type = self.type.get_value()
         port.language = self.language.get_value()
-        port.label = self.label.get_value()
+        port.hint = self.hint.get_value()
         port.color = self.color.get_value()
         port.multiple = self.multiple.get_value()
         port.code = self.code.get_value()
+        port.var_name = self.var_name.get_value()
         self.port_manager.add_port(port)
 
 # ----------------------------------------------------------------------
