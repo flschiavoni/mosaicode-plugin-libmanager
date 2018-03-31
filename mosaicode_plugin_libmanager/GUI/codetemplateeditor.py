@@ -60,18 +60,18 @@ class CodeTemplateEditor(Gtk.Dialog):
         self.tabs.append_page(command_tab, Gtk.Label(_("Command")))
 
         # First Tab: Common properties
-        self.name = StringField({"label": _("Name")}, None)
+        self.name = StringField({"label": _("Name")}, self.__edit)
+        self.language = StringField({"label": _("Language")}, self.__edit)
+        self.extension = StringField({"label": _("Extension")}, self.__edit)
         self.type = StringField({"label": _("Type")}, None)
         self.description = StringField({"label": _("Description")}, None)
-        self.language = StringField({"label": _("Language")}, None)
-        self.extension = StringField({"label": _("Extension")}, None)
         self.code_parts = StringField({"label": _("Code Parts")}, None)
 
+        common_tab.pack_start(self.language, False, False, 1)
         common_tab.pack_start(self.name, False, False, 1)
+        common_tab.pack_start(self.extension, False, False, 1)
         common_tab.pack_start(self.type, False, False, 1)
         common_tab.pack_start(self.description, False, False, 1)
-        common_tab.pack_start(self.language, False, False, 1)
-        common_tab.pack_start(self.extension, False, False, 1)
         common_tab.pack_start(self.code_parts, False, False, 1)
 
         # Second Tab: Code properties
@@ -108,12 +108,20 @@ class CodeTemplateEditor(Gtk.Dialog):
         self.destroy()
 
     # ----------------------------------------------------------------------
+    def __edit(self, data=None):
+        language = self.language.get_value()
+        name = self.name.get_value()
+        extension = self.extension.get_value()
+        self.type.set_value("mosaicode_lib_" + language + \
+                "_" + name + ".extensions" + extension)
+
+    # ----------------------------------------------------------------------
     def __save(self):
         code_template = CodeTemplate()
         code_template.name = self.name.get_value()
+        code_template.language = self.language.get_value()
         code_template.type = self.type.get_value()
         code_template.description = self.description.get_value()
-        code_template.language = self.language.get_value()
         code_template.command = self.command.get_value()
         code_template.extension = self.extension.get_value()
         code_template.code = self.code.get_value()
@@ -133,6 +141,7 @@ class CodeTemplateEditor(Gtk.Dialog):
             values.append("$code[" + code_part + "]$")
             values.append("$code[" + code_part + ",connection]$")
         values.append("$connections$")
+        values.sort()
         data = {"label": _("Code Parts"),
                 "name":"code_parts",
                 "values": values}

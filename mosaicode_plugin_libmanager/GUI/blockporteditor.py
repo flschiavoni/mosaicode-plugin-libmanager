@@ -21,7 +21,8 @@ from mosaicode.GUI.fieldtypes import *
 from mosaicode.GUI.dialog import Dialog
 from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.GUI.treeview import TreeView
-from mosaicode.system import System as System
+from mosaicode.system import System
+from mosaicode.model.port import Port
 import gettext
 
 _ = gettext.gettext
@@ -72,7 +73,7 @@ class BlockPortEditor(Gtk.ScrolledWindow):
     def __populate_list(self):
         labels = []
         for port in self.block.ports:
-            labels.append(port.get("label"))
+            labels.append(port.label)
         self.tree_view.populate(labels)
 
     # ----------------------------------------------------------------------
@@ -149,22 +150,22 @@ class BlockPortEditor(Gtk.ScrolledWindow):
         data = {"label": _("Port Type"), "name":"type", "values": connectors}
         field = ComboField(data, None)
         self.side_panel.pack_start(field, False, False, 1)
-        if configuration is not None: field.set_value(configuration["type"])
+        if configuration is not None: field.set_value(configuration.type)
 
-        data = {"label": _("Connection Type"), "name":"conn_type", "values": ["Input", "Output"]}
+        data = {"label": _("Connection Type"), "name":"conn_type", "values": [Port.INPUT, Port.OUTPUT]}
         field = ComboField(data, None)
         self.side_panel.pack_start(field, False, False, 1)
-        if configuration is not None: field.set_value(configuration["conn_type"])
+        if configuration is not None: field.set_value(configuration.conn_type)
 
         data = {"label": _("Label"), "name":"label"}
         field = StringField(data, None)
         self.side_panel.pack_start(field, False, False, 1)
-        if configuration is not None: field.set_value(configuration["label"])
+        if configuration is not None: field.set_value(configuration.label)
 
         data = {"label": _("Name"), "name":"name"}
         field = StringField(data, None)
         self.side_panel.pack_start(field, False, False, 1)
-        if configuration is not None: field.set_value(configuration["name"])
+        if configuration is not None: field.set_value(configuration.name)
 
         button = Gtk.Button.new_with_label("Save")
         button.connect("clicked", self.__on_save, None)
@@ -179,32 +180,29 @@ class BlockPortEditor(Gtk.ScrolledWindow):
 
     # ----------------------------------------------------------------------
     def __on_save(self, widget=None, data=None):
-        new_port = {}
+        new_port = Port()
         for widget in self.side_panel.get_children():
             try:
-                new_port[widget.get_name()] = widget.get_value()
+                new_port.__dict__[widget.get_name()] = widget.get_value()
             except:
                 pass
 
-        if "label" not in new_port or "name" not in new_port or \
-                "type" not in new_port:
-            return
-        if new_port["type"] == "":
+        if new_port.type == "":
             message = "Type can not be empty"
             Dialog().message_dialog("Error", message, self.block_editor)
             return
-        if new_port["label"] == "":
+        if new_port.label == "":
             message = "Label can not be empty"
             Dialog().message_dialog("Error", message, self.block_editor)
             return
-        if new_port["name"] == "":
+        if new_port.name == "":
             message = "Name can not be empty"
             Dialog().message_dialog("Error", message, self.block_editor)
             return
         contains = False
         i = 0
         for port in self.block.ports:
-            if port["label"] == new_port["label"]:
+            if port.label == new_port.label:
                 self.block.ports[i] = new_port
                 contains = True
             i += 1

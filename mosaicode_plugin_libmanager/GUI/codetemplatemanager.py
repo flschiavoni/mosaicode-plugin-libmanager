@@ -66,6 +66,7 @@ class CodeTemplateManager(Gtk.Dialog):
             {"icone": Gtk.STOCK_EDIT, "action": self.__edit, "data": None})
         button_bar.add_button(
             {"icone": Gtk.STOCK_DELETE, "action": self.__delete, "data": None})
+
         vbox.pack_start(button_bar, False, False, 0)
 
         self.__update()
