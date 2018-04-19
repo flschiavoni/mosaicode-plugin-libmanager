@@ -8,7 +8,7 @@
 
 | | Command |
 | :---: | :---: |
-| *Cloning GitHub:* | `git clone https://github.com/Mosaicode/mosaicode-javascript-webaudio.git`|
+| *Cloning GitHub:* | `git clone https://github.com/Mosaicode/mosaicode-plugin-libmanager.git`|
 
 Then procede with instalation:
 ```
