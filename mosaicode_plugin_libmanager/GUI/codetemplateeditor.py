@@ -67,26 +67,26 @@ class CodeTemplateEditor(Gtk.Dialog):
         self.description = StringField({"label": _("Description")}, None)
         self.code_parts = StringField({"label": _("Code Parts")}, None)
 
-        common_tab.pack_start(self.language, False, False, 1)
-        common_tab.pack_start(self.name, False, False, 1)
-        common_tab.pack_start(self.extension, False, False, 1)
-        common_tab.pack_start(self.type, False, False, 1)
-        common_tab.pack_start(self.description, False, False, 1)
-        common_tab.pack_start(self.code_parts, False, False, 1)
+        common_tab.pack_start(self.language, False, False, 0)
+        common_tab.pack_start(self.name, False, False, 0)
+        common_tab.pack_start(self.extension, False, False, 0)
+        common_tab.pack_start(self.type, False, False, 0)
+        common_tab.pack_start(self.description, False, False, 0)
+        common_tab.pack_start(self.code_parts, False, False, 0)
 
         # Second Tab: Code properties
 
         # Button bar
         button_bar = Gtk.HBox()
-        code_tab.pack_start(button_bar, False, False, 1)
+        code_tab.pack_start(button_bar, False, False, 0)
         self.__populate_combos(button_bar)
 
         self.code = CodeField({"label": _("")}, None)
-        code_tab.pack_start(self.code, True, True, 1)
+        code_tab.pack_end(self.code, True, True, 0)
 
         # Third Tab: Command properties
         self.command = CodeField({"label": _("")}, None)
-        command_tab.pack_start(self.command, True, True, 1)
+        command_tab.pack_start(self.command, True, True, 0)
 
         if code_template_name is not None:
             System()
