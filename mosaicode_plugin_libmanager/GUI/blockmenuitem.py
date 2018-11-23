@@ -9,6 +9,7 @@ from gi.repository import Gtk
 from mosaicode.model.plugin import Plugin
 from mosaicode_plugin_libmanager.GUI.blockeditor import BlockEditor
 from mosaicode.system import System as System
+
 import gettext
 
 _ = gettext.gettext
@@ -34,6 +35,13 @@ class BlockMenuItem(Gtk.MenuItem):
             * **args**
 
         """
-        BlockEditor(self.main_window,
-            System.blocks[self.main_window.block_menu.block.type])
+        diagram = self.main_window.work_area.get_current_diagram()
+        if diagram is None:
+            return False
+        for key in diagram.blocks:
+            if not diagram.blocks[key].is_selected:
+                continue
+            BlockEditor(
+                    self.main_window,
+                    System.get_blocks()[diagram.blocks[key].type])
 

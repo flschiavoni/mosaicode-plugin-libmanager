@@ -29,4 +29,4 @@ class LibManagerPlugin(Plugin):
         main_window.menu.add_menu_category(self.label, menu)
 
         menu_item = BlockMenuItem(main_window)
-        main_window.block_menu.append(menu_item)
+        main_window.diagram_menu.append(menu_item)
