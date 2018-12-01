@@ -19,8 +19,8 @@ from mosaicomponents.openfilefield import OpenFileField
 from mosaicode.GUI.fieldtypes import *
 from mosaicode_plugin_libmanager.GUI.porteditor import PortEditor
 from mosaicode.GUI.dialog import Dialog
-from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.system import System as System
+from buttonbar import ButtonBar
 import gettext
 
 _ = gettext.gettext

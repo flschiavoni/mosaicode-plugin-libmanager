@@ -20,9 +20,9 @@ from mosaicode.GUI.blocknotebook import BlockNotebook
 from mosaicode.GUI.fieldtypes import *
 from mosaicode_plugin_libmanager.GUI.blockeditor import BlockEditor
 from mosaicode.GUI.dialog import Dialog
-from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.model.blockmodel import BlockModel
 from mosaicode.system import System as System
+from buttonbar import ButtonBar
 import gettext
 
 _ = gettext.gettext

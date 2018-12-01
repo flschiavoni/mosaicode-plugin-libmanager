@@ -20,9 +20,9 @@ from mosaicomponents.stringfield import StringField
 from mosaicode.GUI.dialog import Dialog
 from mosaicode.GUI.fieldtypes import *
 from mosaicode_plugin_libmanager.GUI.blockporteditor import BlockPortEditor
-from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.GUI.treeview import TreeView
 from mosaicode.system import System as System
+from buttonbar import ButtonBar
 import gettext
 
 _ = gettext.gettext

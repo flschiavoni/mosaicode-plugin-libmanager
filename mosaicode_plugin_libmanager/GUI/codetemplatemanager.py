@@ -19,9 +19,9 @@ from mosaicomponents.openfilefield import OpenFileField
 from mosaicode.GUI.fieldtypes import *
 from mosaicode_plugin_libmanager.GUI.codetemplateeditor import CodeTemplateEditor
 from mosaicode.GUI.dialog import Dialog
-from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.model.codetemplate import CodeTemplate
 from mosaicode.system import System as System
+from buttonbar import ButtonBar
 import gettext
 
 _ = gettext.gettext

@@ -19,10 +19,10 @@ from mosaicomponents.openfilefield import OpenFileField
 from mosaicode.GUI.blocknotebook import BlockNotebook
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.GUI.dialog import Dialog
-from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.GUI.treeview import TreeView
 from mosaicode.system import System
 from mosaicode.model.port import Port
+from buttonbar import ButtonBar
 import gettext
 
 _ = gettext.gettext

@@ -17,12 +17,12 @@ from mosaicomponents.commentfield import CommentField
 from mosaicomponents.codefield import CodeField
 from mosaicomponents.openfilefield import OpenFileField
 from mosaicode.GUI.fieldtypes import *
-from mosaicode.GUI.buttonbar import ButtonBar
 from mosaicode.GUI.treeview import TreeView
 from mosaicode.GUI.dialog import Dialog
 from mosaicode.model.blockmodel import BlockModel
 from mosaicode.model.port import Port
 from mosaicode.system import System as System
+from buttonbar import ButtonBar
 import gettext
 
 _ = gettext.gettext
